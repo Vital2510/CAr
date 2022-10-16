@@ -37,15 +37,15 @@ const listSchema = {
 const List = new mongoose.model("List",listSchema);
 
 app.get("/", function (req, res) {
-    // var today = new Date();
+    var today = new Date();
 
-    // var options={
-    //     weekday:"long",
-    //     day:"numeric",
-    //     month:"long"
-    // }
+    var options={
+        weekday:"long",
+        day:"numeric",
+        month:"long"
+    }
 
-    // let day=today.toLocaleDateString("en-US",options);
+    let day=today.toLocaleDateString("en-US",options);
 
     Item.find({},function(err,foundItems){
         if(foundItems.length===0){
@@ -60,7 +60,7 @@ app.get("/", function (req, res) {
             res.redirect("/");
         }
         else{
-            res.render("list",{ listTitle:"Today" , newItems:foundItems});
+            res.render("list",{ listTitle: day,  newItems:foundItems});
         }
     });
 });
@@ -128,8 +128,7 @@ app.post("/delete",function(req,res){
 
 });
 
-
-let port = process.env.PORT;
+var port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }

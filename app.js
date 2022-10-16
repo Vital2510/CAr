@@ -25,7 +25,7 @@ const item2 = new Item({
     name:"Milk"
 });
 const item3 = new Item({
-    name:"Butter"
+    name:"Ghee"
 });
 
 const defaultItems = [item1, item2, item3];
